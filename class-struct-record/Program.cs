@@ -36,9 +36,14 @@
             structBeer3.Name = "Peñon del Aguila"; // Como es una variable local se actualiza directamente en la memoria del stack
             Console.WriteLine(structBeer3);
 
+            var structBeer4 = new BeerStruct(9876543, "Patagonia", 4.5f);
+            var copyOfstructBeer4 = new BeerStruct(9876543, "Patagonia", 4.5f);
+            Console.WriteLine(structBeer4.Equals(copyOfstructBeer4));
+            //if (structBeer4 == copyOfstructBeer4)  // you cannot use the == operator with a struct type unless the type explicitly overloads that operator.
+
             // *********************************************************
             // *                                                       *
-            // *                  Record (El primo trabado de la clase)*
+            // *                  Record (El primo trabado de Class)   *
             // *                                                       *
             // *********************************************************
 
@@ -55,61 +60,9 @@
             Console.WriteLine(recordBeer3.Name);
 
             //agregar comparación para cada tipo
-
-            // Memoria
-            // *********************************************************
-            // *                                                       *
-            // *                      Class -> Heap                    *
-            // *                      Struct -> Stack                  *
-            // *                      Record -> Heap                                 *
-            // *                                                       *
-            // *********************************************************
-
-            // Modificaciones
-            // *********************************************************
-            // *                                                       *
-            // *                      Class -> Heap                    *
-            // *                      Struct -> se sobreescriben       *
-            // *                                los bytes en el stack  *
-            // *                                                       *
-            // *********************************************************
-
-
-            // *********************************************************
-            // *                                                       *
-            // *                      Class -> Heap                    *
-            // *                      Struct -> Si el struct está      *
-            // *                                adentro de una clase,  *
-            // *                                se guarda en el heap   *
-            // *********************************************************
-
-            // Herencia
-            // *********************************************************
-            // *                                                       *
-            // *                      Class -> Puede heredar           *
-            // *                      Struct -> No puede heredar, no se*
-            // *                                puede heredar          *
-            // *                      Record -> Solo puede heredar de  *
-            // *                                Record                 *
-            // *                                                       *
-            // *********************************************************
-
-            // Comparación
-            // *********************************************************
-            // *                                                       *
-            // *                      Class -> Compara por referencia  *
-            // *                      Struct -> No puede heredar, no se*
-            // *                                puede heredar          *
-            // *                      Record -> Solo puede heredar de  *
-            // *                                Record                 *
-            // *                                                       *
-            // *********************************************************
-
-
         }
 
-
-        //Una clase es un tipo de referencia en C#. esto significa que se almacena en la memoria o heap
+        public class BaseClass();
         public class BeerClass : BaseClass, IDisposable
         {
             public BeerClass()
@@ -193,6 +146,7 @@
             }
         }
 
+        public record BaseRecord();
         public record BeerRecord : BaseRecord, IDisposable
         {
             public BeerRecord()
@@ -255,8 +209,5 @@
                 Console.WriteLine("Disposing struct beer...");
             }
         }
-
-        public class BaseClass();
-        public record BaseRecord();
     }
 }
